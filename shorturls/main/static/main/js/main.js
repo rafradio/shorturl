@@ -4,6 +4,7 @@ urlButton.onclick = async () => {
     let url = new URL(window.location.href);
     url.pathname = "/getdata";
     let csrftoken = getCookie('csrftoken');
+    console.log("мой url = ", url.toString())
     await makeRequest(url, csrftoken);
 }
 
@@ -23,9 +24,9 @@ const makeRequest = async (url, csrftoken) => {
             throw new Error(`Response status: ${response.status}`);
         }
         const data = await response.json();
-        // console.log("url result = ", data.data);
-        // document.getElementById("UResult").value = data.data;
-        // document.getElementById("Uname").value = "";
+        console.log("url result = ", data["data"]);
+        document.getElementById("UResult").value = data["data"];
+        document.getElementById("Uname").value = "";
         console.log(data);
     }
     catch(error) {
