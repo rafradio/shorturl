@@ -2,5 +2,5 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.getData, name="api"),
+    path('/short', views.getData, name="api"),
 ]

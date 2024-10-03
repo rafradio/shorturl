@@ -1,8 +1,9 @@
 let urlButton = document.getElementById("URL");
+let resultButton = document.getElementById("Copy");
 
 urlButton.onclick = async () => {
     let url = new URL(window.location.href);
-    url.pathname = "/getdata";
+    url.pathname = "/getdata/short";
     let csrftoken = getCookie('csrftoken');
     console.log("мой url = ", url.toString())
     await makeRequest(url, csrftoken);
@@ -34,6 +35,12 @@ const makeRequest = async (url, csrftoken) => {
     }
     
 }
+
+resultButton.onclick = () => {
+    let copyText = document.getElementById("UResult");
+    copyText.select();
+    navigator.clipboard.writeText(copyText.value);
+  }
 
 function getCookie(name) {
     var cookieValue = null;
